@@ -1,40 +1,62 @@
 -- 删除统计外日期
-delete from log where datetime < '2020-01-01';
+delete
+from log
+where datetime < '2022-01-01';
 
 -- 验证日期是否删除正确
-select min(datetime) from log;
+select min(datetime)
+from log;;
 
--- 获取最晚说的话
-select id,user,content, datetime, DATE_FORMAT(datetime,'%H') as h from log
-where DATE_FORMAT(datetime,'%H') <= 5
-order by h desc, datetime
+-- count
+select count(1)
+from log;
 
--- 关键字
-select id,user,content, datetime from log
-where content like '%爱你%'
+-- imgCount
+select count(1)
+from log
+where content = '[图片]';
 
-select id,content, datetime from log
-where content like '%想你%'
+-- voiceCount
+select count(1)
+from log
+where content like '%语音%';
 
-select id,content, datetime from log
-where content like '%喜欢你%'
+-- loveWord.爱你
+select count(1)
+from log
+where content like '%爱你%';
 
-select id,content, datetime from log
-where content like '%吃什么%'
+-- loveWord.想你
+select count(1)
+from log
+where content like '%想你%';
 
-select id,content, datetime from log
-where content like '%晚安%'
+-- loveWord.喜欢你
+select count(1)
+from log
+where content like '%喜欢你%';
 
-select id,content, datetime from log
-where content like '%哈%'
+-- longMsg看bin/analysis.py的输出
+select *
+from log
+where id = 22267;
 
-select count(1) from log
-where content like '%哈%'
+-- latestMsg
+select id, user, content, datetime, DATE_FORMAT(datetime, '%H') as h
+from log
+where DATE_FORMAT(datetime, '%H') <= 5
+order by h desc, datetime;
 
--- 按月分组
-select count(id), date_format(datetime,"%m") as m from log
-group by m
+-- monthGroup
+select concat('[', seq, ',', total, '],')
+from (select date_format(datetime, '%m') + 0 as seq, count(id) as total
+      from log
+      group by seq) tt
+order by seq;
 
--- 按小时分组
-select count(id), date_format(datetime,"%H") as m from log
-group by m
+-- hourGroup
+select concat('[', seq, ',', total, '],')
+from (select date_format(datetime, '%H') + 0 as seq, count(id) as total
+      from log
+      group by seq) tt
+order by seq
