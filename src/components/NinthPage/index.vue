@@ -1,7 +1,7 @@
 <template>
   <div class="v">
     <div class="a">
-      <div class="b">#2021</div>
+      <div class="b">#2022</div>
       <div class="c">年度聊天报告</div>
       <div class="d">关键词</div>
       <div class="e">吃</div>
@@ -17,7 +17,7 @@
         <img class="y" src="@/assets/images/cloud2.png" />
       </div>
       <div class="j">再见</div>
-      <div class="i">2021</div>
+      <div class="i">2022</div>
     </div>
   </div>
 </template>

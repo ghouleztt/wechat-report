@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="title">
-      <div class="a">2021</div>
+      <div class="a">2022</div>
       <div class="b">
         WECHAT
         <br />

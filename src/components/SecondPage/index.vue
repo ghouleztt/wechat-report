@@ -2,7 +2,7 @@
   <div>
     <div class="a">我们又在一起了一年</div>
     <div class="b">年年有我，岁岁有我</div>
-    <div class="c">出发去看看我们的2021吧~</div>
+    <div class="c">出发去看看我们的2022吧~</div>
   </div>
 </template>
 
